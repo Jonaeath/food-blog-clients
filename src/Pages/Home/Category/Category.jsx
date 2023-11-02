@@ -12,12 +12,16 @@ import slide3 from '../../../assets/slide/slide3.jpg';
 import slide4 from '../../../assets/slide/slide4.jpg';
 import slide5 from '../../../assets/slide/slide5.jpg';
 import slide6 from '../../../assets/slide/slide6.jpg';
+import SectionTitle from '../../../Component/SectionTitle/SectionTitle';
 
 
 const Category = () => {  
   return (
     <section>
-            
+            <SectionTitle
+            subHeading={"From 12.30am to 10.00pm"}
+            heading={"Please Order by online"}
+            ></SectionTitle>
             <Swiper
                 slidesPerView={3}
                 centeredSlides={true}
