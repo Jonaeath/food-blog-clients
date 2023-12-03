@@ -51,6 +51,7 @@ const Menu = () => {
                 title = "desert"
                 coverImg = {imgDesert}
             ></MenuCategory>
+            
         </div>
     );
 };
