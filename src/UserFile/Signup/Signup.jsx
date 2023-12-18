@@ -98,7 +98,7 @@ const Signup = () => {
             </form>
             <p>
               <small>
-                New Here? <Link to="/signup">Create an account</Link>
+                New Here?<button><Link to="/login">Create an account</Link></button> 
               </small>
             </p>
           </div>
