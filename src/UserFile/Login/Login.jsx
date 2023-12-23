@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -13,6 +13,11 @@ const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisable] = useState(true)
   const {signIn} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -38,7 +43,8 @@ const Login = () => {
             popup: 'animate__animated animate__fadeOutUp'
         }
     });
-      
+    navigate(from, { replace: true });
+
     })
 
   };
@@ -107,7 +113,7 @@ const Login = () => {
                 />
                 <button onChange={handelValidateCaptcha} className="btn btn-outline btn-primary">Validate</button>
               </div>
-              {/* TODO: make button disabled for captcha */}
+              {/*For captcha */}
               <div className="form-control mt-6">
                 <input
                   disabled={disabled}
