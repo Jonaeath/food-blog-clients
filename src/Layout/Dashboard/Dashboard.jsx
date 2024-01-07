@@ -18,18 +18,18 @@ const Dashboard = () => {
         <Outlet />
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
+          className="btn btn-warning drawer-button lg:hidden"
         >
           Open drawer
         </label>
       </div>
-      <div className="drawer-side bg-orange-300">
+      <div className="drawer-side">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full">
+        <ul className="menu p-4 w-80 min-h-full bg-orange-300">
           {/* Sidebar content here */}
           <li>
             <Link to="/dashboard/home">
@@ -48,8 +48,7 @@ const Dashboard = () => {
           </li>
           <li>
             <Link to="/dashboard/mycart">
-              <FaShoppingCart></FaShoppingCart>My Cart
-              <span className="badge badge-secondary">+{cart?.length || 0}</span>
+              <FaShoppingCart></FaShoppingCart>My Cart +{cart?.length || 0}
             </Link>
           </li>
 

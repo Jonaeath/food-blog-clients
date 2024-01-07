@@ -51,7 +51,7 @@ const MyCart = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>#</th>
+              <th>No</th>
               <th>Food</th>
               <th>Item Name</th>
               <th>Price</th>
