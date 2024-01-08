@@ -4,12 +4,16 @@ import {
   FaWallet,
   FaCalendarAlt,
   FaHome,
+  FaUtensils,
+  FaBook,
+  FaUsers,
 } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
-
   const [cart] = useCart();
+  // TODO: load data from the server
+  const isAdmin = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -30,28 +34,58 @@ const Dashboard = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-orange-300">
-          {/* Sidebar content here */}
-          <li>
-            <Link to="/dashboard/home">
-              <FaHome></FaHome>Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/reservations">
-              <FaCalendarAlt></FaCalendarAlt>Reservations
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/mycart">
-              <FaWallet></FaWallet>Payment History
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/mycart">
-              <FaShoppingCart></FaShoppingCart>My Cart +{cart?.length || 0}
-            </Link>
-          </li>
-
+          {isAdmin ? (
+            <>
+            <li>
+                <Link to="/dashboard/home">
+                  <FaHome></FaHome>Admin Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/reservations"><FaUtensils></FaUtensils>
+                  Add Item
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/mycart">
+                  <FaWallet></FaWallet>Manage Item
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/mycart">
+                  <FaBook></FaBook>Manage Booking
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/allUsers">
+                  <FaUsers></FaUsers>All Users
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/dashboard/home">
+                  <FaHome></FaHome>Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/reservations">
+                  <FaCalendarAlt></FaCalendarAlt>Reservations
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/mycart">
+                  <FaWallet></FaWallet>Payment History
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/mycart">
+                  <FaShoppingCart></FaShoppingCart>My Cart +{cart?.length || 0}
+                </Link>
+              </li>
+            </>
+          )}
           <div className="divider"></div>
           <li>
             <NavLink to="/">
