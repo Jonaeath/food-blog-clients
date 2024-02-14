@@ -7,19 +7,20 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../context/AuthContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import img1 from '../../assets/user/Login.jpg';
 
 const Login = () => {
   const captchaRef = useRef(null);
-  const [disabled, setDisable] = useState(true)
-  const {signIn} = useContext(AuthContext);
+  const [disabled, setDisabled] = useState(true);
+  const [captchaValid, setCaptchaValid] = useState(false);
+  const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
 
-  
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -30,32 +31,43 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    signIn(email, password)
-    .then(result => {
-      const user = result.user;
-      console.log(user)
-
+    if (captchaValid) {
+      signIn(email, password)
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+          Swal.fire({
+            title: "User Login Successful.",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.error("Login failed:", error);
+        });
+    } else {
       Swal.fire({
-        title: 'User Login Successful.',
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
-    navigate(from, { replace: true });
-
-    })
-
+        title: "Please validate the captcha.",
+        icon: "error",
+      });
+    }
   };
 
-  const handelValidateCaptcha = () =>{
-      const user_Captcha_value = captchaRef.current.value;
-      if( validateCaptcha(user_Captcha_value)){
-        setDisable(false);
-      }
-  }
+  const handleValidateCaptcha = () => {
+    const userCaptchaValue = captchaRef.current.value;
+    if (validateCaptcha(userCaptchaValue)) {
+      setCaptchaValid(true);
+      setDisabled(false);
+    } else {
+      setCaptchaValid(false);
+      setDisabled(true);
+    }
+  };
 
   return (
     <>
@@ -65,12 +77,8 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <h1 className="text-5xl font-bold pb-5">Login now!</h1>
+            <img className="rounded-xl" src={img1} alt="food"/>
           </div>
           <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
@@ -110,12 +118,16 @@ const Login = () => {
                   ref={captchaRef}
                   name="captcha"
                   placeholder="type the captcha above"
-                  className="input input-bordered"
+                  className="input input-bordered mb-2"
                 />
-                <button onChange={handelValidateCaptcha} className="btn btn-outline btn-primary">Validate</button>
+                <button
+                  onClick={handleValidateCaptcha}
+                  className="btn btn-outline btn-primary"
+                >
+                  Validate
+                </button>
               </div>
-              {/*For captcha */}
-              <div className="form-control mt-6">
+              <div className="form-control mt-3">
                 <input
                   disabled={disabled}
                   className="btn btn-primary"
@@ -124,13 +136,15 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p>
-              <small>
-                New Here?<button><Link to="/signup">Create an account</Link></button>
-              </small>
-            </p>
-            <SocialLogin/>
-
+            <div className="flex justify-center items-center h-full text-center">
+              <p className="mr-1"> Do not have an account?</p>
+              <button>
+                <Link to="/signup">
+                  <span className="text-green-500 font-bold">Signup</span>
+                </Link>
+              </button>
+            </div>
+            <SocialLogin />
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import img1 from '../../assets/user/SignUp.jpg';
+
 
 const Signup = () => {
   const {
@@ -40,7 +42,7 @@ const Signup = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                navigate("/");
+                navigate("/login");
               }
             });
         })
@@ -56,12 +58,8 @@ const Signup = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">SignUp now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <h1 className="text-5xl font-bold pb-5">SignUp now!</h1>
+            <img className="rounded-xl" src={img1} alt="food"/>
           </div>
           <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -143,7 +141,7 @@ const Signup = () => {
                   </p>
                 )}
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-3">
                 <input
                   className="btn btn-primary"
                   type="submit"
@@ -151,14 +149,14 @@ const Signup = () => {
                 />
               </div>
             </form>
-            <p>
-              <small>
-                New Here?
-                <button>
-                  <Link to="/login">Create an account</Link>
-                </button>
-              </small>
-            </p>
+            <div className="flex justify-center items-center h-full text-center mb-6">
+              <p className="mr-1"> Already have an account?</p>
+              <button>
+                <Link to="/login">
+                  <span className="text-green-500 font-bold">LogIn</span>
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>

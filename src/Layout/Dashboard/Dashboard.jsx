@@ -2,7 +2,6 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import {
   FaShoppingCart,
   FaWallet,
-  FaCalendarAlt,
   FaHome,
   FaUtensils,
   FaBook,
@@ -16,7 +15,7 @@ const Dashboard = () => {
   // TODO: load data from the server
   // const isAdmin = true;
 
-  const [isAdmin] = useAdmin()
+  const [isAdmin] = useAdmin(); 
 
   return (
     <div className="drawer lg:drawer-open">
@@ -68,15 +67,11 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <Link to="/dashboard/home">
-                  <FaHome></FaHome>Home
+                <Link to="allUsers">
+                  <FaHome></FaHome>User Home
                 </Link>
               </li>
-              <li>
-                <Link to="/dashboard/reservations">
-                  <FaCalendarAlt></FaCalendarAlt>Reservations
-                </Link>
-              </li>
+              
               <li>
                 <Link to="/dashboard/mycart">
                   <FaWallet></FaWallet>Payment History
@@ -99,7 +94,7 @@ const Dashboard = () => {
             <NavLink to="/menu"> Our Menu</NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">Order Food</NavLink>
+            <NavLink to="/orderitem/:category">Order Food</NavLink>
           </li>
         </ul>
       </div>
