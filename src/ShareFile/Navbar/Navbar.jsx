@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import useCart from "../../hooks/useCart";
+import img1 from '../../assets/logo/logo3.png';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -57,7 +58,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-orange-400 text-white">
+      <div className="navbar fixed z-10 bg-opacity-40 max-w-screen-xl bg-orange-400 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -83,13 +84,14 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">MMJ FOOD HOUSE</a>
+          <h3 className="text-xl font-bold pb-7 pl-4">MMJ FOOD HOUSE</h3>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          {/* <a className="btn">GOOD FOOD</a> */}
+          <img className="h-20" src={img1} />
         </div>
       </div>
     </>

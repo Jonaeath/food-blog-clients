@@ -27,7 +27,7 @@ const OrderItem = () => {
             <title>Order | Item</title>
         </Helmet>
         <Cover menuImg={CoverImg} title="Order Food"></Cover>
-        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+        <Tabs className='mt-3' defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
             <TabList className='uppercase'>
                 <Tab>Pizza</Tab>
                 <Tab>Soup</Tab>

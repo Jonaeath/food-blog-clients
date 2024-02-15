@@ -1,7 +1,6 @@
 import FoodCard from "../../Component/FoodCard/FoodCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -23,21 +22,19 @@ const OrderTab = ({ items }) => {
     pages.push(pageItems);
   }
 
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },
-  };
-
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
   };
 
   return (
-    <div>
+    <div className="mt-5">
       <Swiper
-        pagination={pagination}
+        pagination={{
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '"><span>' + (index + 1) + '</span></span>';
+          }
+        }}
         modules={[Pagination]}
         className="mySwiper"
         onSlideChange={(swiper) => {
@@ -45,7 +42,7 @@ const OrderTab = ({ items }) => {
         }}
       >
         {pages.map((page, pageIndex) => (
-          <SwiperSlide key={pageIndex} className="mb-11">
+          <SwiperSlide key={pageIndex} className="mb-16">
             <div className="grid md:grid-cols-3 gap-10">
               {page.map((item) => (
                 <FoodCard key={item._id} item={item} />
@@ -55,7 +52,7 @@ const OrderTab = ({ items }) => {
         ))}
       </Swiper>
 
-      <div className="text-center">
+      <div className="text-center mb-3">
         <p>
           Page {currentPage + 1} of {totalPages}
         </p>
