@@ -9,6 +9,7 @@ import Dashboard from "../../Layout/Dashboard/Dashboard";
 import MyCart from "../../Pages/DashBoard/MyCart/MyCart";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AllUsers from "../../Pages/DashBoard/AllUsers/AllUsers";
+import Payment from "../../Pages/Payment/Payment";
 
 
 export const routers = createBrowserRouter([
@@ -50,6 +51,10 @@ export const routers = createBrowserRouter([
             {
                 path:"allUsers",
                 element:<AllUsers/>
+            },
+            {
+                path:'payment',
+                element:<Payment/>
             }
         ]
     }

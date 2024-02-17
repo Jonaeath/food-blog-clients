@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useState } from "react";
+import './Style/style.css';
+
 
 const OrderTab = ({ items }) => {
   // Determine the number of items per page

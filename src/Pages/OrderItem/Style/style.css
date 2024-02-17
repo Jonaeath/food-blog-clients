@@ -1,0 +1,10 @@
+.swiper-pagination-bullet {
+    color: white;
+    background-color: black;
+    width: 1rem;
+    height: 1.5rem;
+    margin: 3rem 3rem; /* Adjust the horizontal gap */
+  }
+  
+  
+  

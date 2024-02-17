@@ -4,7 +4,6 @@ import {
   FaWallet,
   FaHome,
   FaUtensils,
-  FaBook,
   FaUsers,
 } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
@@ -39,23 +38,18 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
             <li>
-                <Link to="/dashboard/home">
+                <Link to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/reservations"><FaUtensils></FaUtensils>
+                <Link to="/menu"><FaUtensils></FaUtensils>
                   Add Item
                 </Link>
               </li>
               <li>
                 <Link to="/dashboard/mycart">
                   <FaWallet></FaWallet>Manage Item
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/mycart">
-                  <FaBook></FaBook>Manage Booking
                 </Link>
               </li>
               <li>
