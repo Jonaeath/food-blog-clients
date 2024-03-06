@@ -1,5 +1,5 @@
 # React + Vite
-[LIVE LINK] ( https://new-food-blog.web.app/)
+[LIVE DEMO]( https://new-food-blog.web.app/)
 Introduction
 About
 My Food Ordering Website. I am developing with app React Full Stack Web Project.
