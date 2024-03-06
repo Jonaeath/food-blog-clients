@@ -61,5 +61,7 @@ npm (Node Package Manager)
 Backend
 The backend contains a completed Node js and Express application. Link to the backend repo and setup will appear here shortly
 
+[Server Github Link](https://github.com/Jonaeath/food-blog-server.git)
+
 Feedback
-Any questions or suggestions? Notice any bugs or glitches? Feel free to send me an email.jonaeathbcc18@gmail.com
+Any questions or suggestions? Notice any bugs or glitches? Feel free to send me an email---> jonaeathbcc18@gmail.com
