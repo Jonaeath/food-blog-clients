@@ -10,7 +10,8 @@ Built Using:
 HTML
 CSS
 JavaScript
-React
+React+Vite
+Axios
 Tailwind css/ Daisyui
 Firebase
 Node js
